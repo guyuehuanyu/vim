@@ -209,15 +209,12 @@ if has("cscope")
 	set csto=1
 	set cst
     set nocsverb
-		cs add /vobs/sw/ecomps/3rdparty/cscope.out
-		cs add /vobs/sw/ecomps/system/cscope.out
-		cs add /vobs/sw/ecomps/sc/cscope.out
-		cs add /vobs/sw/ecomps/lc/cscope.out
     autocmd FileType * set cscopequickfix=s-,c-,d-,i-,t-,e-,f-
     if filereadable("cscope.out")
-		"cs add cscope.out
-	elseif $CSCOPE_DB !=""
-		cs add $CSCOPE_DB
+		cs add cscope.out
+    endif
+	if filereadable(".cscope")
+		source .cscope
     endif
     set csverb
 	set cscopeverbose   "显示消息当其他cscope db加入时
@@ -236,7 +233,7 @@ nmap <leader>ss :cs find s <C-R>=expand("<cword>")<cr><cr>
 " 查找函数、宏、枚举等定义的位置，类似ｃｔａｇｓ所提供的功能
 nmap <leader>sg :cs find g <C-R>=expand("<cword>")<cr><cr>
 " 查找本函数调用的函数
-nmap <leader>sc :cs find c <C-R>=expand("<cword>")<cr><cr>
+nmap <leader>sc :cs find c <C-R>=expand("<cword>")<cr><cr>:call CWToggle()<CR>
 " 查找指定的字符串
 nmap <leader>st :cs find t <C-R>=expand("<cword>")<cr><cr>
 " 查找egrep模式，相当于egrep功能，但查找速度快多了
@@ -303,7 +300,19 @@ let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak, tag
 " ******************************************"}}}
 map  <F4> :call ToggleSketch()<CR>          " 快捷打开画图窗口
 map  <F10> :call RunShell("Generate tags", "ctags --c-kinds=+px --fields=+lKSz -R --extra=+q")<CR>
-"
+let g:cw_flag = 0
+function! CWToggle()
+	if g:cw_flag == 0
+		:cw
+		exe "normal \<c-w>J"
+		let g:cw_flag = 1
+	else
+		:ccl
+		let g:cw_flag = 0
+	endif
+endfunction
+map <leader>cw :call CWToggle()<CR>
+
 map  <F7> :run macros/gdb_mappings.vim<CR><F7><CR>
 map  <F8> <C-K>:bel 20vsplit gdb-variables<CR><C-J>
 ":bel 20vsplit gdb-variables<CR>
