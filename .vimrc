@@ -51,11 +51,12 @@ Bundle 'terryma/vim-multiple-cursors'
 "Bundle 'Lokaltog/vim-powerline'
 Bundle 'itchyny/calendar.vim'
 Bundle 'powerline/powerline'
+Bundle 'idbrii/vim-man'
 "Bundle 'vim-scripts/EasyGrep'
 "Bundle 'mbbill/echofunc'
 "Bundle 'vim-scripts/echofunc.vim'
 "Bundle 'tpope/vim-surround'
-"Bundle 'vim-scripts/TxtBrowser'
+Bundle 'vim-scripts/TxtBrowser'
 Bundle 'guyuehuanyu/vimgdb-for-vim7.4'
 "Bundle 'vim-scripts/winmanager--Fox'
 "Bundle 'vim-scripts/VisIncr'
@@ -213,6 +214,7 @@ if has("cscope")
 		cs add /vobs/sw/ecomps/system/cscope.out
 		cs add /vobs/sw/ecomps/sc/cscope.out
 		cs add /vobs/sw/ecomps/lc/cscope.out
+		cs add /home/huzhenyu/Program_File/arch_x86_64/clish-0.7.3/cscope.out
     autocmd FileType * set cscopequickfix=s-,c-,d-,i-,t-,e-,f-
     if filereadable("cscope.out")
 		"cs add cscope.out
@@ -303,6 +305,15 @@ let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak, tag
 " ******************************************"}}}
 map  <F4> :call ToggleSketch()<CR>          " 快捷打开画图窗口
 map  <F10> :call RunShell("Generate tags", "ctags --c-kinds=+px --fields=+lKSz -R --extra=+q")<CR>
+function! CW_function()
+	let cw_flag = [0]
+	if get(cw_flag, 0) != 1
+	else
+		CTRL-W-J
+		:noraml 
+	endif
+endfunction
+map  <leader>cw :call CW_function()<CR>
 "
 map  <F7> :run macros/gdb_mappings.vim<CR><F7><CR>
 map  <F8> <C-K>:bel 20vsplit gdb-variables<CR><C-J>

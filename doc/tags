@@ -3,6 +3,7 @@
 'gdbvar'	gdb.txt	/*'gdbvar'*
 'gdbvariables'	gdb.txt	/*'gdbvariables'*
 'gdp'	gdb.txt	/*'gdp'*
+./my-cscope.txt	my-cscope.txt	/*.\/my-cscope.txt*
 gdb	gdb.txt	/*gdb*
 gdb-assembly	gdb.txt	/*gdb-assembly*
 gdb-commands	gdb.txt	/*gdb-commands*
@@ -22,4 +23,5 @@ my-gdb.txt	my-gdb.txt	/*my-gdb.txt*
 my-muilt-file.txt	my-muilt-file-多文件操作.txt	/*my-muilt-file.txt*
 my-search.txt	my-search-搜索与替换.txt	/*my-search.txt*
 my-surrounding.txt	my-surrounding-括号匹配删除添加.txt	/*my-surrounding.txt*
+readlink.txt	readlink.txt	/*readlink.txt*
 vimgdb	gdb.txt	/*vimgdb*
