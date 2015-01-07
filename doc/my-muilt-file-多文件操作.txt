@@ -1,0 +1,15 @@
+*my-muilt-file.txt*				
+-多文件操作-
+
+1. 分割操作别名
+	sp 上下分割显示
+	vsp 左右分割显示
+	Ctrl + w + r:向又或向下交换窗口，R方向相反
+2. Tab 窗口使用
+	(n)gt  n 为tab的序号，切换到第几个tab
+	tabd 对所有tab执行某样操作
+	tabn 切换到下一个tab
+	tabl 切换到最后一个tab
+	tabfir 切换到第一个tab
+	tabo 保留当前tab, 关闭其他tab
+	close 关闭当前tab
