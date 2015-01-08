@@ -210,14 +210,6 @@ if has("cscope")
 	set csto=1
 	set cst
     set nocsverb
-<<<<<<< HEAD
-		cs add /vobs/sw/ecomps/3rdparty/cscope.out
-		cs add /vobs/sw/ecomps/system/cscope.out
-		cs add /vobs/sw/ecomps/sc/cscope.out
-		cs add /vobs/sw/ecomps/lc/cscope.out
-		cs add /home/huzhenyu/Program_File/arch_x86_64/clish-0.7.3/cscope.out
-=======
->>>>>>> coding/master
     autocmd FileType * set cscopequickfix=s-,c-,d-,i-,t-,e-,f-
     if filereadable("cscope.out")
 		cs add cscope.out
