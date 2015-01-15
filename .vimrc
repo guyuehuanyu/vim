@@ -319,6 +319,22 @@ let MRU_Max_Entries = 1000
 let MRU_Add_Menu = 0
 nmap <leader>sb :MRU<CR>
 " ******************************************"}}}
+" ************** ctrl setting **************"{{{
+let g:ctrlp_cache_dir = $HOME.'/.vim/tmp/cache/ctrlp'
+let g:ctrlp_show_hidden = 0
+let g:ctrlp_lazy_update = 1
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+let g:ctrlp_working_path_mode=0
+let g:ctrlp_match_window_bottom=1
+let g:ctrlp_max_height=15
+let g:ctrlp_match_window_reversed=0
+let g:ctrlp_mruf_max = 500
+let g:ctrlp_use_caching = 1
+let g:ctrlp_max_files = 0
+let g:ctrlp_clear_cache_on_exit = 0
+" Linux/MacOSX
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+" ******************************************"}}}
 map  <F4> :call ToggleSketch()<CR>          " 快捷打开画图窗口
 map  <F10> :call RunShell("Generate tags", "ctags --c-kinds=+px --fields=+lKSz -R --extra=+q")<CR>
 let g:cw_flag = 0
