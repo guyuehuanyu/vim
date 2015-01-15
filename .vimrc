@@ -304,6 +304,21 @@ let g:EasyGrepRecursive  = 1 " Recursive searching
 let g:EasyGrepIgnoreCase = 1 " not ignorecase:0
 let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak, tags, *.la, *.map, *.bin, *.so, .git"
 " ******************************************"}}}
+" ************** VimBookmarking setting **************"{{{
+map <silent> bb :ToggleBookmark<CR>
+map <silent> bn :NextBookmark<CR>
+map <silent> bp :PreviousBookmark<CR>
+
+
+let g:bookmarking_menu = 1
+
+" ******************************************"}}}
+" ************** MRU setting **************"{{{
+let MRU_File = './._vim_mru_files'
+let MRU_Max_Entries = 1000
+let MRU_Add_Menu = 0
+nmap <leader>sb :MRU<CR>
+" ******************************************"}}}
 map  <F4> :call ToggleSketch()<CR>          " 快捷打开画图窗口
 map  <F10> :call RunShell("Generate tags", "ctags --c-kinds=+px --fields=+lKSz -R --extra=+q")<CR>
 let g:cw_flag = 0
