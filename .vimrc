@@ -305,9 +305,9 @@ let g:EasyGrepIgnoreCase = 1 " not ignorecase:0
 let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak, tags, *.la, *.map, *.bin, *.so, .git"
 " ******************************************"}}}
 " ************** VimBookmarking setting **************"{{{
-map <silent> bb :ToggleBookmark<CR>
-map <silent> bn :NextBookmark<CR>
-map <silent> bp :PreviousBookmark<CR>
+map <silent> <space><space> :ToggleBookmark<CR>
+map <silent> <space>n :NextBookmark<CR>
+map <silent> <space>p :PreviousBookmark<CR>
 
 
 let g:bookmarking_menu = 1
