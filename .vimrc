@@ -37,7 +37,8 @@ Bundle 'sukima/xmledit'
 Bundle 'sketch.vim'
 Bundle 'a.vim'
 "Bundle 'c.vim'
-Bundle 'vim-scripts/taglist.vim'
+Bundle 'majutsushi/tagbar'
+"Bundle 'vim-scripts/taglist.vim' 
 Bundle 'vim-scripts/The-NERD-tree'
 Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'vim-scripts/The-NERD-Commenter'
@@ -46,7 +47,8 @@ Bundle 'vim-scripts/cscope.vim'
 Bundle 'yegappan/mru'    
 " 自动创建目录，在:w name时不报错
 Bundle 'DataWraith/auto_mkdir'
-Bundle 'dterei/VimBookmarking'
+"Bundle 'dterei/VimBookmarking'
+Bundle 'MattesGroeger/vim-bookmarks'
 "Bundle 'msanders/snipmate.vim'
 Bundle 'guyuehuanyu/snipmate.vim'
 Bundle 'jgm/CommonMark'
@@ -161,17 +163,25 @@ inoremap <leader><C-K> <Esc>:wall<C-W>K
 inoremap <leader><C-L> <Esc>:wall<C-W>L
 " **********************************************"}}}
 " ************** Taglist setting ***************"{{{
-let g:Tlist_Ctags_Cmd='ctags'        " 设置ctags的路径，在PATH路径即可
-let g:Tlist_Show_One_File=1          " 不同时显示多个文件的tag，只显示当前文件的
-let g:Tlist_Exit_OnlyWindow=1        " 如何taglist窗口是最后一个窗口，则退出vim
-let g:Tlist_Process_File_Always=1    " 实时更新tags
-let g:Tlist_WinWidth=25              " 设置宽度
-let g:Tlist_Auto_Highlight_Tag=1
-let g:Tlist_Enable_Fold_Column=0
-let g:Tlist_Auto_Update=1
-let g:Tlist_Auto_Open=1              " 启动VIM，自动打开taglist窗口
-nmap  <F2> :TlistToggle<CR>          " 快捷打开Taglist窗口
+"let g:Tlist_Ctags_Cmd='ctags'        " 设置ctags的路径，在PATH路径即可
+"let g:Tlist_Show_One_File=1          " 不同时显示多个文件的tag，只显示当前文件的
+"let g:Tlist_Exit_OnlyWindow=1        " 如何taglist窗口是最后一个窗口，则退出vim
+"let g:Tlist_Process_File_Always=1    " 实时更新tags
+"let g:Tlist_WinWidth=25              " 设置宽度
+"let g:Tlist_Auto_Highlight_Tag=1
+"let g:Tlist_Enable_Fold_Column=0
+"let g:Tlist_Auto_Update=1
+"let g:Tlist_Auto_Open=1              " 启动VIM，自动打开taglist窗口
+"nmap  <F2> :TlistToggle<CR>          " 快捷打开Taglist窗口
 "let g:Tlist_WinHigh=25              " 设置高度
+" ***********************************************"}}}
+" ************** TagBar setting ***************"{{{
+nmap <F2> :TagbarToggle<CR>
+let g:tagbar_ctags_bin='ctags'
+let g:tagbar_width=30
+let g:tagbar_autoshowtag = 1
+autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
+let g:tagbar_left=1
 " ***********************************************"}}}
 " ************** NER_tree setting ***************"{{{
 nmap  <F3> :NERDTreeToggle<CR>       " 快捷打开NERDTree窗口
@@ -305,19 +315,42 @@ let g:EasyGrepIgnoreCase = 1 " not ignorecase:0
 let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak, tags, *.la, *.map, *.bin, *.so, .git"
 " ******************************************"}}}
 " ************** VimBookmarking setting **************"{{{
-map <silent> <space><space> :ToggleBookmark<CR>
-map <silent> <space>n :NextBookmark<CR>
-map <silent> <space>p :PreviousBookmark<CR>
+"map <silent> <space><space> :ToggleBookmark<CR>
+"map <silent> <space>n :NextBookmark<CR>
+"map <silent> <space>p :PreviousBookmark<CR>
+"let g:bookmarking_menu = 1
+"Save/show bookmarks per working directory/project (default 0):
+let g:bookmark_save_per_working_dir = 1
+"Disable auto saving (default 1):
+let g:bookmark_auto_save = 1
+"Change file for auto saving (default $HOME .'/.vim-bookmarks'):
+let g:bookmark_auto_save_file = './.vim-bookmarks'
+"Turn on line highlighting (default 0):
+let g:bookmark_highlight_lines = 0
+"Turn off the warning when clearing all bookmarks (default 1):
+let g:bookmark_show_warning = 0
+"Turn on vertical line centering when jumping to bookmark (default 0):
+let g:bookmark_center = 1
+"???Automatically close bookmarks split when jumping to a bookmark (default 0):
+let g:bookmark_auto_close = 1
+"To customise the symbols, add the following to your |vimrc|:
+let g:bookmark_sign = '>>'
+nmap <space><space> <Plug>BookmarkToggle
+nmap <space>i <Plug>BookmarkAnnotate
+nmap <space>s <Plug>BookmarkShowAll
+nmap <space>n <Plug>BookmarkNext
+nmap <space>p <Plug>BookmarkPrev
+nmap <space>c <Plug>BookmarkClear
+nmap <space>x <Plug>BookmarkClearAll
 
 
-let g:bookmarking_menu = 1
 
 " ******************************************"}}}
 " ************** MRU setting **************"{{{
 let MRU_File = './._vim_mru_files'
 let MRU_Max_Entries = 1000
 let MRU_Add_Menu = 0
-nmap <leader>sb :MRU<CR>
+nmap <space>f :MRU<CR>
 " ******************************************"}}}
 " ************** ctrl setting **************"{{{
 let g:ctrlp_cache_dir = $HOME.'/.vim/tmp/cache/ctrlp'
@@ -334,6 +367,20 @@ let g:ctrlp_max_files = 0
 let g:ctrlp_clear_cache_on_exit = 0
 " Linux/MacOSX
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+" ******************************************"}}}
+" ************** buffer-explore setting **************"{{{
+"要控制缺省的帮助信息是否被显示，使用: >
+let g:bufExplorerDefaultHelp=1       " 显示
+"要控制详细帮助信息是否被显示，使用: >
+let g:bufExplorerDetailedHelp=0      " 不显示
+"要控制是否在活动窗口中打开选中的 buffer，使用： >
+  let g:bufExplorerFindActive=0        " 在当前窗口中打开
+"要控制当排序列表时是否反向来排序，使用： >
+  let g:bufExplorerReverseSort=0       " 不反向排序
+"要在当前窗口中打开，使用： >
+nmap <space>b :BufExplorer<CR>
+"在新的垂直分割的窗口中打开，使用： >
+nmap <space>v :BufExplorerVerticalSplit<CR>
 " ******************************************"}}}
 map  <F4> :call ToggleSketch()<CR>          " 快捷打开画图窗口
 map  <F10> :call RunShell("Generate tags", "ctags --c-kinds=+px --fields=+lKSz -R --extra=+q")<CR>
