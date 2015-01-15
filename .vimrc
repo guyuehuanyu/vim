@@ -42,6 +42,11 @@ Bundle 'vim-scripts/The-NERD-tree'
 Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'vim-scripts/The-NERD-Commenter'
 Bundle 'vim-scripts/cscope.vim'
+" 记录最近打开的文件
+Bundle 'yegappan/mru'    
+" 自动创建目录，在:w name时不报错
+Bundle 'DataWraith/auto_mkdir'
+Bundle 'dterei/VimBookmarking'
 "Bundle 'msanders/snipmate.vim'
 Bundle 'guyuehuanyu/snipmate.vim'
 Bundle 'jgm/CommonMark'
@@ -52,7 +57,7 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'itchyny/calendar.vim'
 Bundle 'powerline/powerline'
 Bundle 'idbrii/vim-man'
-"Bundle 'vim-scripts/EasyGrep'
+Bundle 'vim-scripts/EasyGrep'
 "Bundle 'mbbill/echofunc'
 "Bundle 'vim-scripts/echofunc.vim'
 "Bundle 'tpope/vim-surround'
@@ -297,7 +302,7 @@ let g:EasyGrepMode = 2     " All:0, Open Buffers:1, TrackExt:2,
 let g:EasyGrepCommand = 0  " Use vimgrep:0, grepprg:1
 let g:EasyGrepRecursive  = 1 " Recursive searching
 let g:EasyGrepIgnoreCase = 1 " not ignorecase:0
-let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak, tags, *.la, *.map, *.bin, *.so"
+let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak, tags, *.la, *.map, *.bin, *.so, .git"
 " ******************************************"}}}
 map  <F4> :call ToggleSketch()<CR>          " 快捷打开画图窗口
 map  <F10> :call RunShell("Generate tags", "ctags --c-kinds=+px --fields=+lKSz -R --extra=+q")<CR>
