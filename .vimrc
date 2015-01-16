@@ -38,17 +38,20 @@ Bundle 'sketch.vim'
 Bundle 'a.vim'
 "Bundle 'c.vim'
 Bundle 'majutsushi/tagbar'
-"Bundle 'vim-scripts/taglist.vim' 
+Bundle 'vim-scripts/taglist.vim' 
 Bundle 'vim-scripts/The-NERD-tree'
 Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'vim-scripts/The-NERD-Commenter'
 Bundle 'vim-scripts/cscope.vim'
 " 记录最近打开的文件
 Bundle 'yegappan/mru'    
+Bundle 'Shougo/neomru.vim'    
 " 自动创建目录，在:w name时不报错
 Bundle 'DataWraith/auto_mkdir'
 "Bundle 'dterei/VimBookmarking'
 Bundle 'MattesGroeger/vim-bookmarks'
+Bundle 'Shougo/unite.vim'
+Bundle 'thinca/vim-qfreplace'
 "Bundle 'msanders/snipmate.vim'
 Bundle 'guyuehuanyu/snipmate.vim'
 Bundle 'jgm/CommonMark'
@@ -103,7 +106,7 @@ set   wildmode=list:longest,full  "改变tab模式
 set   smartindent
 set   smartcase
 set   whichwrap=h,l
-set nowrap   " 设置是否换行
+set   wrap   " 设置是否换行
 set   guioptions-=T
 set   guioptions-=m
 set   guioptions-=r
@@ -163,15 +166,15 @@ inoremap <leader><C-K> <Esc>:wall<C-W>K
 inoremap <leader><C-L> <Esc>:wall<C-W>L
 " **********************************************"}}}
 " ************** Taglist setting ***************"{{{
-"let g:Tlist_Ctags_Cmd='ctags'        " 设置ctags的路径，在PATH路径即可
-"let g:Tlist_Show_One_File=1          " 不同时显示多个文件的tag，只显示当前文件的
-"let g:Tlist_Exit_OnlyWindow=1        " 如何taglist窗口是最后一个窗口，则退出vim
-"let g:Tlist_Process_File_Always=1    " 实时更新tags
-"let g:Tlist_WinWidth=25              " 设置宽度
-"let g:Tlist_Auto_Highlight_Tag=1
-"let g:Tlist_Enable_Fold_Column=0
-"let g:Tlist_Auto_Update=1
-"let g:Tlist_Auto_Open=1              " 启动VIM，自动打开taglist窗口
+let g:Tlist_Ctags_Cmd='ctags'        " 设置ctags的路径，在PATH路径即可
+let g:Tlist_Show_One_File=1          " 不同时显示多个文件的tag，只显示当前文件的
+let g:Tlist_Exit_OnlyWindow=1        " 如何taglist窗口是最后一个窗口，则退出vim
+let g:Tlist_Process_File_Always=1    " 实时更新tags
+let g:Tlist_WinWidth=25              " 设置宽度
+let g:Tlist_Auto_Highlight_Tag=1
+let g:Tlist_Enable_Fold_Column=0
+let g:Tlist_Auto_Update=1
+let g:Tlist_Auto_Open=1              " 启动VIM，自动打开taglist窗口
 "nmap  <F2> :TlistToggle<CR>          " 快捷打开Taglist窗口
 "let g:Tlist_WinHigh=25              " 设置高度
 " ***********************************************"}}}
@@ -335,6 +338,13 @@ let g:bookmark_center = 1
 let g:bookmark_auto_close = 1
 "To customise the symbols, add the following to your |vimrc|:
 let g:bookmark_sign = '>>'
+  call unite#custom#profile('source/vim_bookmarks', 'context', {
+    \   'winheight': 13,
+    \   'direction': 'botright',
+    \   'start_insert': 0,
+    \   'keep_focus': 0,
+    \   'no_quit': 0,
+    \ })
 nmap <space><space> <Plug>BookmarkToggle
 nmap <space>i <Plug>BookmarkAnnotate
 nmap <space>s <Plug>BookmarkShowAll
