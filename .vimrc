@@ -174,7 +174,7 @@ let g:Tlist_WinWidth=25              " 设置宽度
 let g:Tlist_Auto_Highlight_Tag=1
 let g:Tlist_Enable_Fold_Column=0
 let g:Tlist_Auto_Update=1
-let g:Tlist_Auto_Open=1              " 启动VIM，自动打开taglist窗口
+"let g:Tlist_Auto_Open=1              " 启动VIM，自动打开taglist窗口
 "nmap  <F2> :TlistToggle<CR>          " 快捷打开Taglist窗口
 "let g:Tlist_WinHigh=25              " 设置高度
 " ***********************************************"}}}
