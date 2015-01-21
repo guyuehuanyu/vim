@@ -360,6 +360,10 @@ nmap <space>x <Plug>BookmarkClearAll
 let MRU_File = './._vim_mru_files'
 let MRU_Max_Entries = 1000
 let MRU_Add_Menu = 0
+"let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'  " For Unix
+let MRU_Include_Files = '\.c$\|\.h$|'
+let MRU_Use_Current_Window = 0
+let MRU_Auto_Close = 1
 nmap <space>f :MRU<CR>
 " ******************************************"}}}
 " ************** ctrl setting **************"{{{
